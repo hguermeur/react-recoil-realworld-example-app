@@ -1,5 +1,5 @@
 defaultBranch: 'develop'
-branchName: '${issue.number}-${issue.title[0,64]}'
+branchName: '${issue.number}-${issue.title[0,64],}'
 gitSafeReplacementChar: '-'
 branches:
 - label: feature
