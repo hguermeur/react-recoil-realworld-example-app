@@ -8,7 +8,7 @@ on:
     - develop
 jobs:
   test-node-versions:
-    if:  startsWith(github.head_ref, 'feature/')
+    if:  startsWith(github.head_ref, 'features/')
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
