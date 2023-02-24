@@ -4,8 +4,8 @@ name: Conventional Commits
 on:
   push:
     branches:
-    - develop/features/*
-    - main/hotfix/*
+    - 'develop/features/**'
+    - 'main/hotfix/**'
 jobs:
   build:
     name: Conventional Commits
