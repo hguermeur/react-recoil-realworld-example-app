@@ -1,0 +1,35 @@
+---
+name: feature test
+on:
+  pull_request:
+    types:
+    - opened
+    branches:
+    - develop
+jobs:
+  test-node-versions:
+    if:  startsWith(github.head_ref, 'feature/')
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version: [ 14.x, 16.x]
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+      - name: install dependencies
+        run: yarn install --frozen-lockfile
+      - name: run test
+        run: yarn test
+      - name: run coverage test
+        run: yarn test --coverage > coverage.txt
+      - name: upload coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage report
+          path: coverage.txt
