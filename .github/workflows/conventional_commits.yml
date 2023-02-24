@@ -1,11 +1,11 @@
 ---
-name: Conventional Commits
+name: conventional commits
 
 on:
   push:
     branches:
-    - 'develop/features/**'
-    - 'main/hotfix/**'
+    - 'features/**'
+    - 'hotfix/**'
 jobs:
   build:
     name: Conventional Commits
