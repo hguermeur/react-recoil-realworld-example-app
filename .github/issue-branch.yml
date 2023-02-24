@@ -4,7 +4,7 @@ gitSafeReplacementChar: '-'
 branches:
 - label: feature
   name: develop
-  prefix: feature/
+  prefix: features/
 - label: hotfix
   name: main
   prefix: hotfix/
