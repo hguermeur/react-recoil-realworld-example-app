@@ -1,0 +1,23 @@
+name: delete branch after merge PR
+on:
+  pull_request:
+    types:
+    - closed
+    branches:
+    - develop
+permissions:
+  issues: write
+  contents: write
+  pull-requests: write
+  repository-projects: write
+jobs:
+  auto-delete:
+    if:  startsWith(github.head_ref, 'features/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: delete merged branch
+        uses: koj-co/delete-merged-action@master
+        with:
+          branches: "!main, !develop, features/**"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
