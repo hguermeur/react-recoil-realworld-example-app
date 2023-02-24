@@ -12,12 +12,12 @@ permissions:
   repository-projects: write
 jobs:
   auto-delete:
-    if:  startsWith(github.head_ref, 'feature/')
+    if:  startsWith(github.head_ref, 'features/')
     runs-on: ubuntu-latest
     steps:
       - name: delete merged branch
         uses: koj-co/delete-merged-action@master
         with:
-          branches: "!main, !develop, *"
+          branches: "!main, !develop, features/**"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
