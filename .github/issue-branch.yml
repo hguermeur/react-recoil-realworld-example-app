@@ -1,0 +1,10 @@
+defaultBranch: 'develop'
+branchName: '${issue.number}-${issue.title[0,64]}'
+gitSafeReplacementChar: '-'
+branches:
+- label: feature
+  name: develop
+  prefix: feature/
+- label: hotfix
+  name: main
+  prefix: hotfix/
