@@ -12,7 +12,7 @@ permissions:
   repository-projects: write
 jobs:
   auto-delete:
-    if:  startsWith(github.head_ref, 'features/')
+    if:  ${{ startsWith(github.head_ref, 'features/') && github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:
       - name: delete merged branch
